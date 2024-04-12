@@ -1,0 +1,79 @@
+﻿@model PruebasOlimpicas.Models.ComplejoDeportivo.ComplejoDeportivoModel
+@{
+    ViewData["Title"] = "GuardarComplejoDeportivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<PruebasOlimpicas.Models.Sede.SedeModel> ListaSede = ViewBag.ListaSede;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PruebasOlimpicas.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="card">
+        <div class="contenedor">
+            <div class="row" style="width: 800px;">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <form asp-action="GuardarComplejoDeportivo" asp-controller="ComplejoDeportivo" method="post">
+                            <legend class="text-center header">CREAR COMPLEJO DEPORTIVO <i class="bi bi-flag"></i></legend>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="font-weight: bold; color: #444444;">Nombre :</label>
+                                    <input asp-for="DescripComplejoDeport" type="text" class="form-control">
+                                    <span asp-validation-for="DescripComplejoDeport" class="text-danger"></span>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Area total:</label>
+                                        <input asp-for="AreaTotal" type="number" class="form-control" min="0">
+                                        <span asp-validation-for="AreaTotal" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-5 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Localización :</label>
+                                        <input asp-for="Localizacion" type="text" class="form-control">
+                                        <span asp-validation-for="Localizacion" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Jefe organización:</label>
+                                        <input asp-for="JefeOrga" type="text" class="form-control" min="0">
+                                        <span asp-validation-for="JefeOrga" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-5 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Sede :</label>
+                                        <select class="form-control select2" name="IdSede">
+                                            <option selected>Sede</option>
+                                            @if (ListaSede != null)
+                                            {
+                                                foreach (var item in ListaSede)
+                                                {
+                                                    <option value="@item.IdSede">@item.DescripSede</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span asp-validation-for="IdSede" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2 d-md-block" style="padding-bottom: 15px;">
+                                    <button type="submit" class="btn btn-success">Guardar <i class="bi bi-floppy"></i></button>
+                                    <a asp-action="ListarComplejoDeportivo" asp-controller="ComplejoDeportivo" class="btn btn-primary">Volver a la lista <i class="bi bi-skip-backward"></i></a>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

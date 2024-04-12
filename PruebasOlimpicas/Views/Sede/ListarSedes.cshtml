@@ -1,0 +1,59 @@
+﻿@model List<PruebasOlimpicas.Models.Sede.SedeModel>
+@{
+    ViewData["Title"] = "ListarSedes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PruebasOlimpicas.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="card">
+        <div class="contenedor">
+            <div class="row" style="width: 800px;">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <div class="card-body">
+                            <legend class="text-center header"> LISTAR SEDE <i class="bi bi-card-checklist"></i></legend>
+                            <a asp-action="GuardarSede" asp-controller="Sede" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
+                            <hr />
+                            <table class="table table-bordered">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Presupuesto</th>
+                                        <th>Nro Complejos</th>
+                                        <th>Accciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.DescripSede</td>
+                                            <td>@item.Presupuesto</td>
+                                            <td>@item.NroComplejos</td>
+                                            <td class="text-center">
+                                                <a asp-action="EditarSede" asp-controller="Sede" class="btn btn-primary btn-sm" asp-route-IdSede="@item.IdSede"><i class="bi bi-pen"></i> Editar</a>
+                                                <a asp-action="EliminarSede" asp-controller="Sede" class="btn btn-danger btn-sm" asp-route-IdSede="@item.IdSede"><i class="bi bi-trash3"></i> Eliminar</a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

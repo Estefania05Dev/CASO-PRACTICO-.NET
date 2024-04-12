@@ -1,0 +1,41 @@
+﻿@model PruebasOlimpicas.Models.ComplejoDeportivo.ComplejoDeportivoModel
+@{
+    ViewData["Title"] = "EliminarComplejoDeportivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PruebasOlimpicas.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="card">
+        <div class="contenedor">
+            <div class="row" style="width: 800px;">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <div class="card-body">
+                            <legend class="text-center header">ELIMINAR SEDE</legend>
+                            <form asp-action="EliminarComplejoDeportivo" asp-controller="ComplejoDeportivo" method="post">
+                                <input asp-for="IdComplejoDeport" type="hidden" class="form-control">
+                                <div class="alert alert-danger" role="alert">
+                                    ¿Desea eliminar el complejo deportivo : @Html.DisplayTextFor(m => m.DescripComplejoDeport) ?
+                                </div>
+                                <button type="submit" class="btn btn-danger">Elimnar</button>
+                                <a asp-action="ListarComplejoDeportivo" asp-controller="ComplejoDeportivo" class="btn btn-primary">Volver a la lista <i class="bi bi-skip-backward"></i></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

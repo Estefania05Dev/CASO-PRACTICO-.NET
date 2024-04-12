@@ -1,0 +1,58 @@
+﻿@model PruebasOlimpicas.Models.Sede.SedeModel
+@{
+    ViewData["Title"] = "EditarSede";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PruebasOlimpicas.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="card">
+        <div class="contenedor">
+            <div class="row" style="width: 800px;">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <form asp-action="EditarSede" asp-controller="Sede" method="post">
+                            <legend class="text-center header">EDITAR SEDE <i class="bi bi-geo-alt"></i></legend>
+                            <input asp-for="IdSede" type="hidden" class="form-control">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="font-weight: bold; color: #444444;">Nombre :</label>
+                                    <input asp-for="DescripSede" type="text" class="form-control">
+                                    <span asp-validation-for="DescripSede" class="text-danger"></span>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Presupuesto :</label>
+                                        <input asp-for="Presupuesto" type="number" class="form-control" min="0">
+                                        <span asp-validation-for="Presupuesto" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-5 mb-3">
+                                        <label class="form-label" style="font-weight: bold; color: #444444;">Nro Complejo:</label>
+                                        <input asp-for="NroComplejos" type="number" class="form-control" min="0">
+                                        <span asp-validation-for="NroComplejos" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2 d-md-block" style="padding-bottom: 10px;">
+                                    <button type="submit" class="btn btn-success">Guardar <i class="bi bi-floppy"></i></button>
+                                    <a asp-action="ListarSedes" asp-controller="Sede" class="btn btn-primary">Volver a la lista <i class="bi bi-skip-backward"></i></a>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
